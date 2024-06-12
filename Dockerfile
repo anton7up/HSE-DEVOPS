@@ -4,6 +4,6 @@ WORKDIR HSE-DEVOPS
 
 COPY . HSE-DEVOPS
 
-RUN javac Main.java
+RUN javac src/main/java/org/example/Main.java
 
 CMD ["java","Main"]
