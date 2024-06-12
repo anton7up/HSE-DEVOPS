@@ -1,9 +1,4 @@
 FROM openjdk:21
-
-WORKDIR HSE-DEVOPS
-
-COPY . HSE-DEVOPS
-
-RUN javac src/main/java/org/example/Main.java
-
-CMD ["java","Main"]
+ADD target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
