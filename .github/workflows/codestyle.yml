@@ -15,7 +15,7 @@ jobs:
       - name: Check code style
         uses: dbelyaev/action-checkstyle@master
         with:
-          github_token: "${{ secrets.TOKEN }}"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
           reporter: github-pr-review
           checkstyle_config: sun_checks.xml
           level: warning
