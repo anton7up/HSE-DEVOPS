@@ -1,5 +1,5 @@
 # Используем образ JDK 21 для сборки проекта
-FROM openjdk:21-ea-11-jdk-slim as build
+FROM openjdk:21 as build
 
 # Устанавливаем рабочую директорию в контейнере
 WORKDIR /workspace/app
@@ -13,7 +13,7 @@ COPY src src
 # Собираем приложение с помощью Maven
 RUN ./mvnw install -DskipTests
 
-FROM openjdk:21-ea-11-jre-slim
+FROM openjdk:21
 
 # Скопируем собранный jar-файл из предыдущего шага
 COPY --from=build /workspace/app/target/*.jar app.jar
