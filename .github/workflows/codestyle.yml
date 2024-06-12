@@ -1,0 +1,21 @@
+name: Check code style
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  checkstyle:
+    name: checkstyle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Check code style
+        uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: "${{ secrets.TOKEN }}"
+          reporter: github-pr-review
+          checkstyle_config: sun_checks.xml
+          level: warning
